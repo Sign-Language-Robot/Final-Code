@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Use_SLR_Web_Application</title>
+    </head>
+    <body>
+        <header>
+            <div class="how-to-use-div">
+                How To Use Sign Language Robot
+            </div>
+            <style>
+            .how-to-use-div {
+                background-color: #333;
+                color: #fff;
+                font-size: 18px;
+                padding: 10px 20px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                box-shadow: 0px 2px 2px rgba(0,0,0,0.3);
+                transition: all 0.3s ease;
+                margin: 5px;
+                border-radius: 15px;
+            }
+
+                .how-to-use-div:hover {
+                    background-color: #444;
+                    box-shadow: 0px 4px 4px rgba(0,0,0,0.3);
+                    transform: translateY(-2px);
+                }
+
+        </style>
+        </header>
+        <div class="container">
+            <main role="main" class="pb-3">
+
+                <link rel="stylesheet"
+                    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                <script
+                    src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/js/font-awesome.min.js"></script>
+                <script
+                    src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                <div class="video-div">
+                    <video class="video" id="my-video" loop preload="auto" muted>
+                        <source src="videos\video.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="main-div-use">
+                    <div id="myDiv">
+                    </div>
+                </div>
+
+                <div class="main-div">
+                    <div class="title">
+                        Search Possible Word
+                    </div>
+                    <div class="grid-container-main-div">
+                        <lottie-player
+                            src="https://assets2.lottiefiles.com/packages/lf20_jh9gfdye.json"
+                            background="transparent" speed="1"
+                            style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+                        <div class="search-container">
+                            <form onsubmit="event.preventDefault(); search();">
+                                <input type="text" placeholder="Search...">
+                                <button type="submit" onclick="search()"><i
+                                        class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <script>
+        function search() {
+            var words = ['apple', 'banana', 'orange', 'pear'];
+            var query = document.querySelector('input').value;
+            if (words.includes(query)) {
+                alert('Possible');
+            } else {
+                alert('Coming Soon');
+            }
+        }
+    </script>
+
+                    <style>
+
+        .title {
+            border-radius: 35px;
+            background-color: white;
+            color: black;
+            transition: all 0.7s ease-in-out;
+            margin: auto;
+            font-size: 36px;
+            font: 100;
+            width: max-content;
+            padding: 20px;
+        }
+
+            .title:hover {
+                background-color: black;
+                color: white;
+                transition: all 0.7s ease-in-out;
+            }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+            .search-container input[type=text] {
+                padding: 10px;
+                border: none;
+                border-radius: 30px;
+                outline: none;
+                font-size: 16px;
+                background-color: #f2f2f2;
+                width: 50vw;
+                margin-right: 10px;
+                transition: all 0.7s ease-in-out;
+            }
+
+                .search-container input[type=text]:hover {
+                    scale: 1.1;
+                    background-color: white;
+                    color: black;
+                    border: 1px solid black;
+                    transition: all 0.7s ease-in-out;
+                }
+
+            .search-container button[type=submit] {
+                padding: 5px 20px;
+                border: none;
+                background-color: #333;
+                color: #fff;
+                border-radius: 30px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                margin: 10px;
+            }
+
+                .search-container button[type=submit]:hover {
+                    background-color: #555;
+                }
+
+        .grid-container-main-div {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .lottie-player {
+            border-radius: 50%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+            /* Hover effect on the lottie-player */
+            .lottie-player:hover {
+                transform: scale(1.1);
+            }
+
+    </style>
+                </div>
+
+                <style>
+
+    .main-div-use {
+        border-radius: 35px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #FFFAF4;
+        padding: 20px;
+        margin: 20px;
+        transition: all 1s ease-in-out; /* Add transition to make the hover effect smooth */
+    }
+
+        .main-div-use:hover {
+            transform: translateY(-5px); /* Move the div up by 5 pixels */
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+            background-color: #EFFFFD; /* Change the background color to your preference */
+            transition: all 2s ease-in-out;
+        }
+
+    .main-div {
+        border-radius: 25px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #FFFAF4;
+        padding: 20px;
+        transition: all 1s ease-in-out; /* Add transition to make the hover effect smooth */
+    }
+        /* Add the hover effect */
+
+        .main-div:hover {
+            transform: translateY(-5px); /* Move the div up by 5 pixels */
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+            background-color: #EFFFFD; /* Change the background color to your preference */
+            transition: all 2s ease-in-out;
+        }
+</style>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        document.getElementById('my-video').play();
+                    });
+                </script>
+
+                <style>
+    .video-div {
+        width: calc(100% - 80px);
+        margin: 20px;
+        overflow: hidden;
+    }
+
+    video {
+        display: block;
+        width: 80%;
+        /*height: 40%;*/
+        border: 1px solid #ccc;
+        border-radius: 80px;
+        margin: 0 auto;
+        transition: all 0.7s ease-in-out;
+    }
+
+</style>
+            </main>
+        </div>
+
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2023 - Sign Language Robot
+            </div>
+        </footer>
+
+        <style>
+        footer {
+            background-color: black;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px 0;
+            box-shadow: 0px -2px 2px rgba(0,0,0,0.1);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            border-radius: 18px;
+            margin: 25px;
+            transition: all 1s ease-in-out;
+        }
+
+        footer:hover
+        {
+                background-color: #444;
+                box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+                transform: translateY(-2px);
+                transition: all 1s ease-in-out;
+                background-color: white;
+                color: black;   
+        }
+
+            footer a {
+                color: #fff;
+                text-decoration: none;
+                transition: color 0.2s ease;
+            }
+
+                footer a:hover {
+                    color: #aaa;
+                }
+
+    </style>
+    </body>
+</html>

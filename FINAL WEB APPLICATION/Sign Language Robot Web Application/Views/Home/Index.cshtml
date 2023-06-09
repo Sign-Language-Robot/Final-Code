@@ -1,0 +1,489 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section class="Main-Heading">
+    <br />
+    <h1 class="Main-Heading-Text">
+        Sign Language Robot
+    </h1>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/js/font-awesome.min.js"></script>
+    <script src="https://unpkg.com/@@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <br />
+</section>
+<br />
+<section class="Button-Section">
+    <div class="Buttons">
+        <button onclick="sendButtonClick('Hi.')">Hi</button>
+        <button onclick="sendButtonClick('Nice')">Nice</button>
+        <button onclick="sendButtonClick('Ma\'am')">Ma'am</button>
+        <button onclick="sendButtonClick('Sir')">Sir</button>
+        <button onclick="sendButtonClick('Great')">Great</button>
+        <button onclick="sendButtonClick('Welcome')">Welcome</button>
+        <button onclick="sendButtonClick('No')">No</button>
+        <button onclick="sendButtonClick('Yes')">Yes</button>
+        <button onclick="sendButtonClick('Thanks')">Thanks</button>
+    </div>
+</section>
+<br />
+<section class="Speech-Section">
+    <div>
+        <button id="voice-button-speech" class="voice-button" onclick="toggleSpeechRecognition()"><i class="fa fa-microphone"></i></button>
+        <div id="lottie-container" style="display: none;">
+            <lottie-player id="lottie-player" src="https://assets10.lottiefiles.com/packages/lf20_YWXN67wWtj.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+        </div>
+    </div>
+    <div id="display-active-speech" class="Display-Active">
+        Display
+    </div>
+    <style>
+        .voice-button {
+            position: relative;
+            display: inline-block;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            font-size: 20px;
+            outline: none;
+            transform: translate3d(150px, 35px, 0px);
+        }
+
+            .voice-button i {
+                color: #555;
+                scale: 3;
+                transition: all 0.3s ease-in-out;
+            }
+
+                .voice-button i:hover {
+                    transition: all 0.3s ease-in-out;
+                    padding: 10px;
+                    border-radius: 15px;
+                    border: 1px solid darkgray;
+                    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+                }
+
+        .voice-text {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</section>
+<br />
+<section class="Main-Controller">
+    <br />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/js/font-awesome.min.js"></script>
+    <div class="Controller-Div">
+        <div class="grid-container">
+            <div style="margin: 0 auto;">
+                <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_lc46h4dr.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+            </div>
+            <div class="Buttons-Col">
+                <div class="Buttons-Heading-Center">
+                    <h1>
+                        Connect Robot
+                    </h1>
+                </div>
+                <div class="Ports-div">
+                    <button class="port-button" onclick="sendButtonClick('Open Port')">Connect</button>
+                    <button class="port-button" onclick="sendButtonClick('Close Port')">Disconnect</button>
+                </div>
+
+                <style>
+                    .Ports-div {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                    }
+
+                    .port-button {
+                        background-color: black;
+                        color: white;
+                        border: none;
+                        padding: 12px 24px;
+                        text-align: center;
+                        text-decoration: none;
+                        display: inline-block;
+                        font-size: 16px;
+                        margin: 4px 2px;
+                        cursor: pointer;
+                        border-radius: 20px;
+                    }
+
+                        .port-button:hover {
+                            background-color: rgba(0,0,0,0.8);
+                        }
+                </style>
+            </div>
+        </div>
+        <style>
+            .grid-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 10px;
+            }
+        </style>
+        <div class="Text-Col">
+            <div class="Text-Heading-Center">
+                <h1>
+                    Message Input
+                </h1>
+            </div>
+            <div class="Input-Container">
+                <input id="textInput" type="text" placeholder="Enter your text here">
+            </div>
+            <div class="Button-Container">
+                <button id="sendButton" class="btn-success" style="border-radius: 25px;">
+                    Send
+                </button>
+            </div>
+        </div>
+    </div>
+    <br />
+</section>
+
+<style>
+    .Main-Heading {
+        /*background-color: #242a33;*/
+        background: linear-gradient(to right, red, black);
+        padding: 30px 60px;
+        text-align: center;
+        border-radius: 50px;
+        margin: 10px;
+        transition: all 1s ease-in-out;
+        user-select: none;
+    }
+
+        .Main-Heading h1 {
+            color: #fff;
+            font-size: 48px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .Main-Heading:hover {
+            transition: all 0.7s ease-in-out;
+            box-shadow: 0px 0px 15px #242a33;
+        }
+
+    .Main-Display {
+        background-color: white;
+        padding: 50px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid darkgray;
+        border-radius: 30px;
+        transition: all 0.7s ease-in-out;
+    }
+
+        .Main-Display .active {
+            color: #242a33;
+            font-size: 36px;
+            /*font-weight: bold;*/
+            letter-spacing: 2px;
+            /*text-transform: uppercase;*/
+            text-align: center;
+            padding: 20px;
+            border-radius: 20px;
+            max-width: 80%;
+            transition: all 0.7s ease;
+        }
+
+            .Main-Display .active:hover {
+                box-shadow: 0 10px 20px rgba(0,0,0,.1);
+                transition: all 0.7s ease;
+                scale: 1.2;
+            }
+
+        .Main-Display:hover {
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.7s ease-in-out;
+        }
+
+    .Main-Controller {
+        background-color: white;
+        border: 1px solid darkgray;
+        border-radius: 30px;
+        padding: 50px 0;
+        transition: all 0.7s ease-in-out;
+    }
+
+        .Main-Controller:hover {
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.7s ease-in-out;
+        }
+
+    .Controller-Div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+        align-items: center;
+    }
+
+    .Buttons-Col {
+        background-color: #fff;
+        padding: 20px;
+        margin-left: 20px;
+        border-radius: 20px;
+        transition: all 0.7s ease-in-out;
+        border: 1px solid darkgray;
+    }
+
+        .Buttons-Col:hover {
+            transition: all 0.7s ease-in-out;
+            box-shadow: 0 10px 20px rgba(0,0,0,.1);
+        }
+
+    .Text-Col {
+        background-color: #fff;
+        padding: 20px;
+        margin-right: 20px;
+        border-radius: 20px;
+        transition: all 0.7s ease-in-out;
+        border: 1px solid darkgray;
+        /*visibility:hidden;*/
+    }
+
+        .Text-Col:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,.1);
+            transition: all 0.7s ease-in-out;
+        }
+
+    .Buttons-Heading-Center {
+        text-align: center;
+        justify-content: center;
+        place-items: center;
+        font: light;
+        user-select: none;
+    }
+
+    .Text-Heading-Center {
+        text-align: center;
+        justify-content: center;
+        place-items: center;
+        font: light;
+        user-select: none;
+    }
+
+    .Button-Grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-gap: 20px;
+    }
+
+        .Button-Grid button {
+            background-color: #fff;
+            color: #242a33;
+            font: bold;
+            border: none;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,.1);
+            transition: all .3s ease;
+        }
+
+            .Button-Grid button:hover {
+                box-shadow: 0 15px 30px rgba(0,0,0,.2);
+                transform: translateY(-3px);
+            }
+
+        .Button-Grid .Button1 {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .Button-Grid .Button2 {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .Button-Grid .Button3 {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        .Button-Grid .Button4 {
+            grid-column: 3;
+            grid-row: 2;
+        }
+
+        .Button-Grid .Button5 {
+            grid-column: 2;
+            grid-row: 3;
+        }
+
+    .Input-Container {
+        /*position: relative;*/
+        border: 1px solid darkgray;
+        border-radius: 25px;
+        margin: 20px;
+        padding 10px;
+        transition: all 0.7s ease-in-out;
+    }
+
+        .Input-Container input[type="text"] {
+            /*width: 100%;*/
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            /*border-bottom: 2px solid #ccc;*/
+            outline: none;
+            font-size: 16px;
+            border-radius: 25px;
+        }
+
+            .Input-Container input[type="text"]:focus {
+                border-radius: 25px;
+                /*scale: 1.1;*/
+                transition: all 0.7s ease-in-out;
+            }
+
+                .Input-Container input[type="text"]:focus + label {
+                    top: -20px;
+                    font-size: 12px;
+                    color: #242a33;
+                    padding: 10px;
+                    margin: 5px;
+                    border-radius: 25px;
+                    /*scale: 1.1;*/
+                    transition: all 0.7s ease-in-out;
+                }
+
+        .Input-Container label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 16px;
+            color: #a9a9a9;
+            transition: all .7s ease;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 25px;
+        }
+
+        .Input-Container:hover {
+            scale: 1.1;
+            transition: all 0.7s ease-in-out;
+            /*transform: translateY(-30px);/**/
+            /*transform: translateX(-100px);*/
+            /*backdrop-filter: blur(10px);*/
+        }
+
+    .Button-Container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+        .Button-Container button {
+            scale: 1.5;
+        }
+
+    .Main-Buttons-With-Timer {
+        background-color: white;
+        padding: 50px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid darkgray;
+        border-radius: 30px;
+        transition: all 0.7s ease-in-out;
+    }
+
+        .Main-Buttons-With-Timer:hover {
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.7s ease-in-out;
+        }
+
+    .Button-Section {
+        background-color: white;
+        border: 1px solid darkgray;
+        border-radius: 30px;
+        padding: 50px 20px;
+        transition: all 0.7s ease-in-out;
+    }
+
+        .Button-Section:hover {
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.7s ease-in-out;
+        }
+
+    .Buttons {
+        display: flex;
+        overflow-x: scroll;
+        white-space: nowrap;
+        border-radius: 30px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+        .Buttons::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+
+        .Buttons button {
+            border-radius: 30px;
+            margin-left: 20px;
+            margin-right: 20px;
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: #fff;
+            color: #242a33;
+            font: bold;
+            box-shadow: 0 0px 3px rgba(0,0,0,.1);
+            transition: all 0.7s ease-in-out;
+        }
+
+            .Buttons button:hover {
+                color: #fff;
+                background-color: #242a33;
+            }
+
+    .Speech-Section {
+        background-color: white;
+        border: 1px solid darkgray;
+        border-radius: 30px;
+        padding: 100px 100px;
+        transition: all 0.7s ease-in-out;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+    }
+
+        .Speech-Section:hover {
+            border: 1px solid #B20600;
+            box-shadow: 0px 0px 20px rgb(178, 6, 0, 0.3);
+            transition: all 0.7s ease-in-out;
+        }
+
+    .Display-Active {
+        color: #242a33;
+        font-size: 36px;
+        font-weight: 100;
+        letter-spacing: 2px;
+        /*text-transform: uppercase;*/
+        text-align: center;
+        padding: 20px;
+        border-radius: 20px;
+        max-width: 80%;
+        transition: all 0.7s ease;
+    }
+
+        .Display-Active:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,.1);
+            transition: all 0.7s ease;
+            scale: 1.2;
+        }
+</style>
